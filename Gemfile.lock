@@ -325,7 +325,7 @@ DEPENDENCIES
   byebug
   carrierwave!
   coffee-rails (~> 4.2)
-  devise
+  devise (~> 4.2)
   fog
   jbuilder (~> 2.5)
   jquery-rails

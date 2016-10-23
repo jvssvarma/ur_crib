@@ -1,5 +1,6 @@
 class CribsController < ApplicationController
   before_action :set_crib, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_member!, except: [:index]
 
   # GET /cribs
   # GET /cribs.json
@@ -14,7 +15,7 @@ class CribsController < ApplicationController
 
   # GET /cribs/new
   def new
-    @crib = Crib.new
+    @crib = current_member.cribs.build
   end
 
   # GET /cribs/1/edit
@@ -24,7 +25,7 @@ class CribsController < ApplicationController
   # POST /cribs
   # POST /cribs.json
   def create
-    @crib = Crib.new(crib_params)
+    @crib = current_user.cribs.build(crib_params)
 
     respond_to do |format|
       if @crib.save
