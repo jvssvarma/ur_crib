@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  host: localhost
+  username: sunrise
+  password: sunrise123
+
+development:
+  <<: *default
+  database: ur_crib_development
+
+test:
+  <<: *default
+  database: ur_crib_test
+
+production:
+  <<: *default
+  database: ur_crib_production
+  username: ur_crib
+  password: <%= ENV['CODEVARMA_DATABASE_PASSWORD'] %>

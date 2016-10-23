@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cribs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Summary</th>
+      <th>Rent</th>
+      <th>Availability</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cribs.each do |crib| %>
+      <tr>
+        <td><%= crib.title %></td>
+        <td><%= crib.summary %></td>
+        <td><%= crib.rent %></td>
+        <td><%= crib.availability %></td>
+        <td><%= image_tag crib.pics[0].url(:thumb) %></td>
+        <td><%= link_to 'Show', crib %></td>
+        <td><%= link_to 'Edit', edit_crib_path(crib) %></td>
+        <td><%= link_to 'Destroy', crib, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Crib', new_crib_path %>

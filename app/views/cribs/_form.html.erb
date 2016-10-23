@@ -1,0 +1,105 @@
+<%= form_for(crib) do |f| %>
+  <% if crib.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(crib.errors.count, "error") %> prohibited this crib from being saved:</h2>
+
+      <ul>
+      <% crib.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>Room Details</h3>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :summary %>
+    <%= f.text_area :summary %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rent %>
+    <%= f.number_field :rent %>
+  </div>
+
+  <div class="field">
+    <%= f.label :availability %>
+    <%= f.date_field :availability %>
+  </div>
+
+  <div class="field">
+    <%= f.label :room %>
+    <%= f.select :room_type, options_for_select(['Private', 'Shared', 'Paying Guest', 'Entire Home'], f.object.room_type) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bath %>
+    <%= f.select :bath_type, options_for_select(['Attached', 'Common'], f.object.bath_type) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ownership %>
+    <%= f.select :owner_type, options_for_select(['Rental', 'Owner', 'Agent']) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lease_type, "Type of Lease" %>
+    <%= f.select :lease_type, options_for_select([['Short (30days - 180days)','Short term'], ['Long (> 180days)', 'Long term']], f.object.lease_type) %>
+  </div>
+
+  <h3>Preferences</h3>
+
+  <div class="field">
+    <%= f.label :prefer_gender, "Preferred Gender" %>
+    <%= f.select :prefer_gender, options_for_select(['Male', 'Female', 'Any'], f.object.prefer_gender) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pets, "Pet Policy" %>
+    <%= f.select :pets, options_for_select(['No Pets', 'Pets Ok'], f.object.pets) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :smoking, "Smoking Policy" %>
+    <%= f.select :smoking, options_for_select(['No Smoking', 'Smoking Ok'], f.object.smoking) %>
+  </div>
+
+  <h3>Amenities</h3>
+  <div class="field">
+    <%= f.label :microwave, "Mircowave" %>
+    <%= f.check_box :microwave %>
+    <%= f.label :heater, "Heater" %>
+    <%= f.check_box :heater %>
+    <%= f.label :wifi, "Wi-Fi" %>
+    <%= f.check_box :wifi %>
+  </div>
+
+  <div class="field">
+    <%= f.label :washndry, "Washer & Dryer" %>
+    <%= f.select :washndry, options_for_select(['In House', 'Separate Laundry', 'Not available'], f.object.washndry) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :furnish, "Furnishing Details" %>
+    <%= f.select :furnish, options_for_select(['Not Furnished', 'Partially Furnished', 'Furnished with bed', 'Fully Furnished'], f.object.furnish) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :extras, "Other Amenities" %>
+    <%= f.text_area :extras %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pics, "Upload Property Pics" %>
+    <%= f.file_field :pics, multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

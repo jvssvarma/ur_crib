@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @crib.title %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @crib.summary %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @crib.rent %>
+</p>
+
+<p>
+  <strong>Availability:</strong>
+  <%= @crib.availability %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @crib.room_type %>
+</p>
+
+<p>
+  <strong>Bath:</strong>
+  <%= @crib.bath_type %>
+</p>
+
+<p>
+  <strong>Ownership:</strong>
+  <%= @crib.owner_type %>
+</p>
+
+<p>
+  <strong>Lease:</strong>
+  <%= @crib.lease_type %>
+</p>
+
+<p>
+  <strong>Preferred Gender:</strong>
+  <%= @crib.prefer_gender %>
+</p>
+
+<p>
+  <strong>Pets Policy:</strong>
+  <%= @crib.pets %>
+</p>
+
+<p>
+  <strong>Smoking Policy:</strong>
+  <%= @crib.smoking %>
+</p>
+
+<p>
+  <strong>Amenities:</strong>
+  <%= @crib.extras %>
+</p>
+<br>
+
+<% @crib.pics.each do |pic| %>
+  <%= image_tag pic.url(:medium) %>
+<% end %>
+
+<%= render 'imageshow' %>
+
+<%= link_to 'Edit', edit_crib_path(@crib) %> |
+<%= link_to 'Back', cribs_path %>
