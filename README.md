@@ -28,7 +28,7 @@
   - About, FAQ, Contact page
 
 ###User Stories
-  As User,
+  - As User,
   	- Ability to create, edit, delete availability posts
   	- Ability to manage the privacy of details in the post and personal account.
   	- Search for places using city names and zip codes
@@ -37,37 +37,37 @@
   	- Can post and sell items on the moving sale section
   	- Ability to delete user’s account.
   	- Ability to delete my account
-  As Visitor,
+  - As Visitor,
   	- I should be able to create a verified account easily using email or twitter (for say)
   	- Read about the space on the welcome page, with the search option but can contact or read an 	entire post only with an account.
 
 ###Modeling data
   - Rooms Model
-      Title, Description (Write all possible details here.)
-      Room type: single, shared, paying guest or house
-      Bath type: attached or separate
-      Owner type: tenant, owner or agent
-      City, Address, Zip code
-      Lease type: short, long or fixed number
-      Availability dates
-      Gender preferred: Male or Female or Any
-      Rent: fixed or negotiable, Deposit
-      Furnished? Amenities? Smoking? Pets?
-      Files: Multiple Images
+    - Title, Description (Write all possible details here.)
+    - Room type: single, shared, paying guest or house
+    - Bath type: attached or separate
+    - Owner type: tenant, owner or agent
+    - City, Address, Zip code
+    - Lease type: short, long or fixed number
+    - Availability dates
+    - Gender preferred: Male or Female or Any
+    - Rent: fixed or negotiable, Deposit
+    - Furnished? Amenities? Smoking? Pets?
+    - Files: Multiple Images
   - Users Model
-      username:string (with auto-generate option & only this will be shown publicly)
-      full name
-      profile:image (For verification, only user can see his image and it will be hidden otherwise)
-      contact: email or phone
-      join date
-      birth date
-      and other attributes from devise
-  - Items Model
-      Title, Description (Write all possible details here.)
-      Item type: Electronics, Furniture, auto, others
-      Price: fixed or negotiable
-      Location: area or zip code
-      Item Condition: New, Like New, Good, Used & Refurbished
+    - username:string (with auto-generate option & only this will be shown publicly)
+    - full name
+    - profile:image (For verification, only user can see his image and it will be hidden otherwise)
+    - contact: email or phone
+    - join date
+    - birth date
+    - default attributes from devise(email and password)
+  Items Model
+    - Title, Description (Write all possible details here.)
+    - Item type: Electronics, Furniture, auto, others
+    - Price: fixed or negotiable
+    - Location: area or zip code
+    - Item Condition: New, Like New, Good, Used & Refurbished
 
 ###Possible Pages in the App
   - Welcome & About,FAQ, Contact details
