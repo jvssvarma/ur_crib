@@ -62,7 +62,7 @@
     - join date
     - birth date
     - default attributes from devise(email and password)
-  Items Model
+  - Items Model
     - Title, Description (Write all possible details here.)
     - Item type: Electronics, Furniture, auto, others
     - Price: fixed or negotiable
