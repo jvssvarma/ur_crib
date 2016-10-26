@@ -25,7 +25,7 @@ class CribsController < ApplicationController
   # POST /cribs
   # POST /cribs.json
   def create
-    @crib = current_user.cribs.build(crib_params)
+    @crib = current_member.cribs.build(crib_params)
 
     respond_to do |format|
       if @crib.save
