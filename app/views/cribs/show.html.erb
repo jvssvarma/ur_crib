@@ -1,69 +1,83 @@
-<p id="notice"><%= notice %></p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @crib.title %>| UrCrib</title>
+</head>
 
-<p>
-  <strong>Title:</strong>
-  <%= @crib.title %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @crib.summary %>
-</p>
-
-<p>
-  <strong>Rent:</strong>
-  <%= @crib.rent %>
-</p>
-
-<p>
-  <strong>Availability:</strong>
-  <%= @crib.availability %>
-</p>
-
-<p>
-  <strong>Room:</strong>
-  <%= @crib.room_type %>
-</p>
-
-<p>
-  <strong>Bath:</strong>
-  <%= @crib.bath_type %>
-</p>
-
-<p>
-  <strong>Ownership:</strong>
-  <%= @crib.owner_type %>
-</p>
-
-<p>
-  <strong>Lease:</strong>
-  <%= @crib.lease_type %>
-</p>
-
-<p>
-  <strong>Preferred Gender:</strong>
-  <%= @crib.prefer_gender %>
-</p>
-
-<p>
-  <strong>Pets Policy:</strong>
-  <%= @crib.pets %>
-</p>
-
-<p>
-  <strong>Smoking Policy:</strong>
-  <%= @crib.smoking %>
-</p>
-
-<p>
-  <strong>Amenities:</strong>
-  <%= @crib.extras %>
-</p>
-<br>
-
-<% @crib.pics.each do |pic| %>
-  <%= image_tag pic.url(:medium) %>
-<% end %>
-
-<%= link_to 'Edit', edit_crib_path(@crib) %> |
-<%= link_to 'Back', cribs_path %>
+<body>
+  <section id="portfolio-information">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                  <% @crib.pics.each do |pic| %>
+                    <div class="item"><%= image_tag pic.url %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="project-name overflow">
+                      <h2 class="bold"><%= @crib.title %> </h2>
+                      <ul class="nav navbar-nav navbar-default">
+                          <li><a href="#"><i class="fa fa-clock-o"></i>Posted on <%= @crib.created_at.strftime('%m-%d-%y') %> by <%= @crib.member.username %></a></li>
+                      </ul>
+                  </div>
+                  <div class="project-info overflow">
+                      <p style="text-align: justify;"><br><%= @crib.summary %></p>
+                      <div class="skills overflow">
+                          <h3>Amenities:</h3>
+                          <ul class="nav navbar-nav navbar-default">
+                              <li>
+                                <% if @crib.microwave %>
+                                  <p><i class="fa fa-check-square"></i> Microwave &nbsp;</p>
+                                <% else %>
+                                  <p><i class="fa fa-square-o"></i> Microwave &nbsp;</p>
+                                <% end %>
+                              </li>
+                              <li>
+                                <% if @crib.heater %>
+                                  <p><i class="fa fa-check-square"></i> Heater/AC &nbsp;</p>
+                                <% else %>
+                                  <p><i class="fa fa-square-o"></i> Heater/AC &nbsp;</p>
+                                <% end %>
+                              </li>
+                              <li>
+                                <% if @crib.wifi %>
+                                  <p><i class="fa fa-check-square"></i> WiFi &nbsp;</p>
+                                <% else %>
+                                  <p><i class="fa fa-square-o"></i> WiFi &nbsp;</p>
+                                <% end %>
+                              </li>
+                          </ul>
+                      </div>
+                      <ul class="elements">
+                        <h3>Crib Details</h3>
+                          <li><p><i class="fa fa-angle-right"></i> <%= @crib.room_type %> room with <%= @crib.bath_type %> Bathroom</p></li>
+                          <li><p><i class="fa fa-angle-right"></i> Available for <%= @crib.lease_type %> lease (> 180days)</p></li>
+                          <li><p><i class="fa fa-angle-right"></i> Preferences: <br> &nbsp; &nbsp; &nbsp; <span style="font-weight: 700;">Gender:</span> <%= @crib.prefer_gender %>, <span style="font-weight: 700;">Pets Policy:</span> <%= @crib.pets %>, <span style="font-weight: 700;">Smoking Policy:</span> <%= @crib.smoking %></p></li>
+                          <li><p><i class="fa fa-angle-right"></i> Space is <%= @crib.furnish %> and Laundry <%= @crib.washndry %></p></li>
+                          <li><p><i class="fa fa-angle-right"></i> Other Amenities: <%= @crib.extras %></p></li>
+                      </ul>
+                  </div>
+                  <div class="client overflow">
+                      <h3>Rent:</h3>
+                      <ul class="nav navbar-nav navbar-default">
+                          <li><p><i class="fa fa-usd"></i> <%= @crib.rent %>/month</p></li>
+                      </ul>
+                  </div>
+                  <div class="live-preview">
+                    <% if @crib.member == current_member %>
+                      <%= link_to 'Edit', edit_crib_path(@crib), class: "btn btn-common uppercase" %>
+                      <%= link_to 'Delete', crib_path(@crib), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-common uppercase" %>
+                      <%= link_to 'Back', cribs_path, class: "btn btn-common uppercase" %>
+                    <% else %>
+                      <a href="#" class="btn btn-common uppercase">Message "<%= @crib.member.username %>"</a>
+                    <% end %>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <br>
+  <br>
+</body>

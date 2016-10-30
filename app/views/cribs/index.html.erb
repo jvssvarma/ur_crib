@@ -1,20 +1,93 @@
-<p id="notice"><%= notice %></p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Cribs | UrCrib.com </title>
+</head>
 
-<div class="col-lg-9 col-md-12">
-  <div class="row">
-    <% @cribs.each do |crib| %>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-      <div class="thumbnail"> <%= link_to image_tag(crib.pics[0].url(:thumb)), crib, class: "img-responsive"%>
-        <div class="caption">
-          <h3><%= crib.title %></h3>
-          <p>$<%= crib.rent %> | Availability: <%= crib.availability.strftime('%m-%d-%y') %></p>
-          <hr>
-          <p class="text-center"><a href="#" class="btn btn-success" role="button">For Sale</a></p>
-        </div>
+<body>
+  <section id="page-breadcrumb">
+      <div class="vertical-center sun">
+           <div class="container">
+              <div class="row">
+                  <div class="action">
+                      <div class="col-sm-12">
+                          <h1 class="title">Search by Zip Code or City</h1>
+                          <p>Search box details go here</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-    <% end %>
-  </div>
-</div>
+  </section>
+  <!--/#page-breadcrumb-->
 
-<br>
+  <section id="projects">
+      <div class="container">
+          <div class="row">
+            <ul class="portfolio-filter text-center">
+                <li><h4 class="btn btn-default">Sort Options:</h4></li>
+                <li><h4 class="btn"> Availability</h4></li>
+                <li><h4 class="btn"> Posted Date</h4></li>
+                <li><h4 class="btn"> Rent: Low to High </h4></li>
+                <li><h4 class="btn"> Rent: High to Low </h4></li>
+            </ul><!--/#portfolio-filter-->
+              <div class="col-md-3 col-sm-4">
+                  <div class="sidebar portfolio-sidebar">
+                      <div class="sidebar-item categories">
+                          <h3>Crib Search Filters</h3>
+                          <ul class="nav navbar-stacked">
+                              <li><a href="#">Location<span class="pull-right">(1)</span></a></li>
+                              <li class="active"><a href="#">Rent Range<span class="pull-right">(8)</span></a></li>
+                              <li><a href="#">Listed By<span class="pull-right">(4)</span></a></li>
+                              <li><a href="#">Lease Type<span class="pull-right">(9)</span></a></li>
+                              <li><a href="#">Room Type<span class="pull-right">(4)</span></a></li>
+                              <li><a href="#">Bath Type<span class="pull-right">(3)</span></a></li>
+                              <li><a href="#">Php<span class="pull-right">(2)</span></a></li>
+                              <li><a href="#">Wordpress<span class="pull-right">(8)</span></a></li>
+                          </ul>
+                      </div>
+                      <div class="sidebar-item  recent">
+                          <h3>Recent Projects</h3>
+                          <div class="media">
+                              <div class="pull-left">
+                                  <a href="#"><%= image_tag "temp/project1.jpg" %></a>
+                              </div>
+                              <div class="media-body">
+                                  <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
+                                  <p>posted on  07 March 2014</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-9 col-sm-8">
+                  <div class="row">
+                    <% @cribs.each do |crib| %>
+                        <div class="col-xs-6 col-sm-6 col-md-4 blog-padding-right">
+                           <div class="single-blog two-column">
+                               <div class="post-thumb">
+                                   <%= link_to image_tag(crib.pics[0].url(:thumb)), crib, class: "img-responsive"%>
+                                   <div class="post-overlay">
+                                       <span class="uppercase"><a href="#"><%= crib.availability.strftime('%d')%><br><small><%= crib.availability.strftime('%b')%></small></a></span>
+                                   </div>
+                               </div>
+                               <div class="post-content overflow">
+                                   <h2 class="post-title bold" style="text-align: justify;"><%= link_to crib.title, crib %></h2>
+                                   <h3 class="post-author"><p>Posted by <%= crib.member.username %></p></h3>
+                                   <div class="post-bottom overflow">
+                                       <ul class="nav nav-justified post-nav">
+                                           <li><p><i class="fa fa-usd"></i> <%= crib.rent %></p></li>
+                                           <li><p><i class="fa fa-calendar"></i> <%= crib.availability.strftime('%d %b') %></p></li>
+                                           <li><p class="text-center"><%= link_to "View Details", class: "btn btn-success", role: "button" %></p></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                          </div>
+                       </div>
+                   <% end %>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</body>

@@ -1,44 +1,133 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UrCrib</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
+    <header id="header">
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
 
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="#"></a>   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myInverseNavbar2" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="myInverseNavbar2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Cribs Listings</a></li>
-            <li><a href="#">Moving Sales</a></li>
-            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">How it works ? <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                  <li><a href="#">FAQ's</a></li>
-                <li><a href="#">Diff Room types</a></li>
-                <li><a href="#">Tips</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-          </ul>
+                    <a class="navbar-brand" href="/">
+                    	<h1><%= image_tag "temp/logo12.png", style: "width: 200px;" %></h1>
+                    </a>
+
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/cribs">Find Cribs</a></li>
+                        <li><a href="#">Moving Sales</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <% if member_signed_in? %>
+                          <li><%= link_to 'SIGN OUT', destroy_member_session_path, method: :delete %></li>
+                        <% else %>
+                          <li><a href="/members/sign_in">SIGN IN</a></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="search">
+                    <form role="form">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
+    </header>
+
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <%= image_tag "temp/under.png", class: "img-responsive inline" %>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2>Popular Post</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><%= image_tag "temp/profile1.png" %></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</blockquote>
+                                <h3><a href="#">- Jhon Kalis</a></h3>
+                            </div>
+                         </div>
+                         <h2>Recent Post</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><%= image_tag "temp/profile2.png" %></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison eiusmod.</blockquote>
+                                <h3><a href="">- Abraham Josef</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <address>
+                        E-mail: <a href="mailto:support@urcrib.com">support@urcrib.com</a> <br>
+                        Phone: +1 (123) 456 7890 <br>
+                        Fax: +1 (123) 456 7891 <br>
+                        </address>
+
+                        <h2>Address</h2>
+                        <address>
+                        San Jose, CA <br>
+                        United States <br>
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; Your Company 2014. All Rights Reserved.</p>
+                        <p>Create by <a target="_blank" href="http://www.codevarma.com">Varma</a> &amp; <a target="_blank" href="#">Raja</a>. Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
   </body>
 </html>

@@ -1,6 +1,16 @@
-<h1>Editing Crib</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= @crib.title %>| UrCrib</title>
+</head><!--/head-->
 
-<%= render 'form', crib: @crib %>
 
-<%= link_to 'Show', @crib %> |
-<%= link_to 'Back', cribs_path %>
+<div class="container">
+  <div class="col-md-4">
+    <h1>Editing Crib</h1>
+    <%= render 'form', crib: @crib %>
+
+    <%= link_to 'Cancel', cribs_path %> |
+    <%= link_to 'Back', @crib %>
+  </div>
+</div>

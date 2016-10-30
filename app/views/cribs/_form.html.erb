@@ -81,7 +81,7 @@
 
   <div class="field">
     <%= f.label :washndry, "Washer & Dryer" %>
-    <%= f.select :washndry, options_for_select(['In House', 'Separate Laundry', 'Not available'], f.object.washndry) %>
+    <%= f.select :washndry, options_for_select([['In House', 'in apartment'],['Separate Laundry', 'in community'],['No Laundry', 'not available']], f.object.washndry) %>
   </div>
 
   <div class="field">
