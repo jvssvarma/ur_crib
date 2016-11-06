@@ -8,12 +8,9 @@
   <section id="portfolio-information">
       <div class="container">
           <div class="row">
-              <div class="col-md-6">
-                <div id="owl-demo" class="owl-carousel owl-theme">
-                  <% @crib.pics.each do |pic| %>
-                    <div class="item"><%= image_tag pic.url %></div>
-                  <% end %>
-                </div>
+              <div class="col-md-6 text-center">
+                <% image_urls = @crib.pics.map {|image| image.medium.url} %>
+                <%= carousel_for(image_urls) %>
               </div>
               <div class="col-sm-6">
                   <div class="project-name overflow">
